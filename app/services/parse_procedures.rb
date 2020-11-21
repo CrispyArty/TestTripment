@@ -8,7 +8,7 @@ class ParseProcedures
   def initialize; end
 
   def call
-    doc = Nokogiri::HTML(URI.open(URL))
+    doc = Nokogiri::HTML(URI.parse(URL).open)
 
     list = parse(doc)
 
