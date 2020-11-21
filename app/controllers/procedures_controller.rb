@@ -1,6 +1,5 @@
 class ProceduresController < ApplicationController
   def index
-    procedure = MedicalProcedure.all
-    render json: procedure, status: :ok
+    render json: MedicalProcedure.get_ordered_by_query(params[:q]), status: :ok
   end
 end
