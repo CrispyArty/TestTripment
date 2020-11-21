@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ProceduresController do
@@ -19,7 +21,7 @@ RSpec.describe ProceduresController do
       get :index, params: { q: 'An' }
       json_response = JSON.parse(response.body)
 
-      expect(json_response.first.keys).to include("id", "name", "category")
+      expect(json_response.first.keys).to include('id', 'name', 'category')
     end
   end
 end

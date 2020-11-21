@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe MedicalProcedure, type: :model do
@@ -12,14 +14,13 @@ RSpec.describe MedicalProcedure, type: :model do
     end
 
     it 'respects the right order' do
-      query = MedicalProcedure.filtered('An').sorted('An').map { |p| p.name }
+      query = MedicalProcedure.filtered('An').sorted('An').map(&:name)
       expect(query).to eq([
-                              'Angiography',
-                              'Angiography 2',
-                              'Cerebral angiography',
-                              'Hand surgery',
+                            'Angiography',
+                            'Angiography 2',
+                            'Cerebral angiography',
+                            'Hand surgery'
                           ])
     end
   end
-
 end

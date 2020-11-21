@@ -1,5 +1,6 @@
-class MedicalProcedure < ApplicationRecord
+# frozen_string_literal: true
 
-  scope :filtered, ->(q) { where("name ILIKE ?", "%#{q}%") }
+class MedicalProcedure < ApplicationRecord
+  scope :filtered, ->(q) { where('name ILIKE ?', "%#{q}%") }
   scope :sorted, ->(q) { order(Arel.sql("name ILIKE '#{sanitize_sql_like(q)}%' desc, name")) }
 end
