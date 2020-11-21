@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProceduresController do
-  describe 'filtered and sorted query' do
+  describe 'GET #index' do
     before do
       FactoryBot.create :medical_procedure, name: 'Angiography'
       FactoryBot.create :medical_procedure, name: 'Hand surgery'
