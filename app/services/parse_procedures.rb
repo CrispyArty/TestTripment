@@ -10,27 +10,32 @@ class ParseProcedures
   def call
     doc = Nokogiri::HTML(URI.open(URL))
 
-    i = 0
-    doc.css('.mw-parser-output h3').each do |link|
-      category = link.css('.mw-headline').first.content
-      link.css('+ ul').each do |ul|
-        ul.css('li').each do |li|
-          procedure = li.css('a')[0].content
+    list = parse(doc)
 
-          model = MedicalProcedure.create_with(category: category).find_or_initialize_by(name: procedure)
+    "Parsed #{save_list(list)} new records"
+  end
 
-          # i += model.new_record? ? 1 : 0;
-          # model.save!
-          i += if model.new_record?
-                 model.save!
-                 1
-               else
-                 0
-               end
+  private
+
+  def save_list(list)
+    list.map do |item|
+      model = MedicalProcedure.create_with(category: item[:category]).find_or_initialize_by(name: item[:name])
+      was_new = model.new_record?
+      model.save!
+      was_new ? 1 : 0
+    end.reduce(:+)
+  end
+
+  def parse(doc)
+    [].tap do |list|
+      doc.css('.mw-parser-output h3').each do |link|
+        category = link.css('.mw-headline').first.content
+        link.css('+ ul').each do |ul|
+          ul.css('li').each do |li|
+            list << { category: category, name: li.css('a')[0].content }
+          end
         end
       end
     end
-
-    "Parsed #{i} new records"
   end
 end
