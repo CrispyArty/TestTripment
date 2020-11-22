@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a test application for Tripment
 
-Things you may want to cover:
+## Install
+```
+bundle install
+rails db:create db:migrate
+```
 
-* Ruby version
+## Run the application
+```
+rails s
+```
 
-* System dependencies
+## Run parser for medical procedures
+```
+rails parse_procedures
+```
 
-* Configuration
+## Endpoint for medical procedures
+```
+/procedures?q={query}
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Run tests
+```
+rspec
+```
