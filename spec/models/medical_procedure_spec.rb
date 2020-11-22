@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe MedicalProcedure, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
-
   describe 'filtered and sorted query' do
     before do
       FactoryBot.create :medical_procedure, name: 'Angiography'

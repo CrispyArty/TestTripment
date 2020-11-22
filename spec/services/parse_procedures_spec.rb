@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe ParseProcedures do
-  # pending "add some examples to (or delete) #{__FILE__}"
-
   describe 'parse procedures from Wiki' do
     before do
       obj = double('test html')
