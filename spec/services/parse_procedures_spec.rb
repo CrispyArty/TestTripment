@@ -15,6 +15,7 @@ RSpec.describe ParseProcedures do
 
       allow(URI).to receive(:parse).and_return obj
     end
+
     it 'fill table' do
       expect(ParseProcedures.new.call).to be_eql('Parsed 94 new records')
     end
