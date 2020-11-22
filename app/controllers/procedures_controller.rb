@@ -2,6 +2,11 @@
 
 class ProceduresController < ApplicationController
   def index
-    render json: MedicalProcedure.filtered(params[:q]).sorted(params[:q]), status: :ok
+    query = params[:q]
+    if query.is_a?(String)
+      render json: MedicalProcedure.filtered(query).sorted(query).all, status: :ok
+    else
+      render json: MedicalProcedure.all, status: :ok
+    end
   end
 end
