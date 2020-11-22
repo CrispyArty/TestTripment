@@ -1,6 +1,7 @@
 # README
 
 This is a test application for Tripment
+https://test-tripment.herokuapp.com/procedures
 
 ## Install
 ```

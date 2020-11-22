@@ -23,5 +23,12 @@ RSpec.describe ProceduresController do
 
       expect(json_response.first.keys).to include('id', 'name', 'category')
     end
+
+    it 'returns every procedure when empty query' do
+      get :index
+      json_response = JSON.parse(response.body)
+
+      expect(json_response.first.keys).to include('id', 'name', 'category')
+    end
   end
 end
