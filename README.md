@@ -1,7 +1,11 @@
 # README
 
 This is a test application for Tripment
-https://test-tripment.herokuapp.com/procedures
+
+Test task:
+https://github.com/tripment/test-tasks/tree/master/tripment-backend
+
+Deployed app: https://test-tripment.herokuapp.com/procedures
 
 ## Install
 ```
